@@ -3,7 +3,7 @@ FROM infotechsoft/java:7-jre
 
 MAINTAINER Ray Bradley "https://github.com/rmbrad"
 
-ENV SOLR_VERSION 4.9.1
+ENV SOLR_VERSION 4.10.3
 ENV SOLR solr-$SOLR_VERSION
 ENV SOLR_JETTY /usr/local/$SOLR
 ENV SOLR_HOME /var/lib/solr
