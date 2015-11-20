@@ -12,10 +12,9 @@ You may then access the Solr server as usual using the docker host's ip address 
 
 ### Usage
 The container runs Solr within a Jetty server and exposes it on port `8983`. It is configured to load cores from 
-directories placed in `/var/lib/solr`, which is exposed as a volume. Logging is sent to the console so it may be 
-monitored using `docker logs`, and also written to a file on the exposed volume `/var/log/solr` for access by 
-tools. The container only contains the Solr libraries necessary for the web application, any other libraries 
-required by cores must be provided by the user.
+directories placed in `/var/lib/solr`. Logging is sent to the console so it may be monitored using `docker logs`, 
+and also written to a file on `/var/log/solr` for access by tools. The container only contains the Solr libraries 
+necessary for the web application, any other libraries required by cores must be provided by the user.
 
 Basic usage of the container for development should follow the [Quick Start](#quickstart) instructions. In order
 to build an image for hosting an index, a new `Buildfile` should be created from this one, which adds the 

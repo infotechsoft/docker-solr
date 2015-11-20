@@ -22,7 +22,6 @@ RUN yum -y install epel-release && \
 
 
 EXPOSE 8983
-VOLUME ["$SOLR_HOME", "/var/log/solr"]
 
 WORKDIR $SOLR_JETTY
 CMD ["java", "-Dsolr.solr.home=/var/lib/solr", "-jar", "start.jar"]
