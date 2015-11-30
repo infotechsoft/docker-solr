@@ -20,8 +20,8 @@ RUN yum -y install epel-release && \
     yum -y remove tar jq && \
     yum -y clean all
 
-
 EXPOSE 8983
 
 WORKDIR $SOLR_JETTY
-CMD ["java", "-Dsolr.solr.home=/var/lib/solr", "-jar", "start.jar"]
+
+CMD java $JAVA_OPTS -Dsolr.solr.home=/var/lib/solr -jar start.jar
