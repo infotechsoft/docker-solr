@@ -9,15 +9,15 @@ ENV SOLR_JETTY /usr/local/$SOLR
 ENV SOLR_HOME /var/lib/solr
 
 RUN yum -y install epel-release && \
-    yum -y install tar jq && \
-    DWNLD_URL=$(curl -L http://www.apache.org/dyn/closer.lua/lucene/solr/$SOLR_VERSION/$SOLR.tgz?asjson=1 | jq -r '.preferred + .path_info') && \
+    yum -y install jq && \
+    DWNLD_URL="http://archive.apache.org/dist/lucene/solr/$SOLR_VERSION/$SOLR.tgz" && \
     curl -L $DWNLD_URL | \
       tar -xz -C /tmp/ --exclude $SOLR/example/example* --exclude $SOLR/example/multicore --exclude $SOLR/example/solr/collection1 --strip-components=1 $SOLR/example && \
     mv /tmp/example $SOLR_JETTY && \
     mv $SOLR_JETTY/solr $SOLR_HOME && \
     mkdir -p /var/log/solr && \
     sed -i 's:^\(solr.log=\).*:\1/var/log/solr/:g' $SOLR_JETTY/resources/log4j.properties && \
-    yum -y remove tar jq && \
+    yum -y remove jq && \
     yum -y clean all
 
 EXPOSE 8983
